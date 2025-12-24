@@ -1,0 +1,18 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<div class="container" style = "margin-top : 150px">
+      <h2 class = text-center style = "font-family : 'Monotype Corsiva' ; color : #E6120E">About Us</h2>
+      <div class="row">
+          <div class="col-sm-4">
+              <img src="{% static 'images/about.jpg' %}" width=300 height = 200 class="img-responsive">        
+          </div>
+          <div class="col-sm-8" style = "font-weight : bold ; margin-top : 30px">
+            Welcome to tiny nursery & gardening, your trusted partner in cultivating beautiful gardens and providing high-quality plants for every green thumb.
+            Our nursery is home to an extensive selection of plants, from vibrant annuals to hardy perennials, and everything in between. Whether you're a seasoned gardener or just starting your journey, 
+            our knowledgeable team is here to guide you through every step of the process, from plant selection to soil care and garden design.
+      </div>
+  </div>
+  
+
+{% endblock %}

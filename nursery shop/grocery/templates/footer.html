@@ -1,0 +1,210 @@
+{% extends 'all_product.html' %}
+{% block b %}
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<hr>
+{% for i in cat %}
+ <div class="container-fluid">
+   	<h1 class="text-center mt-5 mb-5">
+   	</h1>
+	 <h2>{{i.name}}</h2><hr>
+   	<div id="{{i.id}}" class="carousel slide" data-ride="carousel">
+   		<div class="carousel-inner row w-100 mx-auto">
+			{% for j in pro %}
+			{% if i.name == j.category.name %}
+			{% if forloop.counter in num %}
+				<div class="carousel-item col-md-3 active"><div class="card">
+					<center><img class="card-img-top img-fluid" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"></center>
+   						<div class="card-body">
+   						<h4 class="card-title">{{j.name}} Rs.{{j.price}}</h4>
+   						<p class="card-text">{{j.desc}}</p>
+							<form align="center" action="{% url 'add_cart' j.id %}" method="post">
+								{% csrf_token %}
+							<button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>
+   					</div>
+   				</div>
+   			</div>
+
+
+				{% else %}
+				<div class="carousel-item col-md-3">
+   				<div class="card">
+					<center><img class="card-img-top img-fluid" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"></center>
+   						<div class="card-body">
+   						<h4 class="card-title">{{j.name}} Rs.{{j.price}}</h4>
+   						<p class="card-text">{{j.desc}}</p>
+<form align="center" action="{% url 'add_cart' j.id %}" method="post">
+	{% csrf_token %}
+							<button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>   					</div>
+   				</div>
+   			</div>
+
+			{% endif %}
+	 		{% endif %}
+			{% endfor %}
+			<a class="carousel-control-prev" href="#{{i.id}}" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+  			    <a class="carousel-control-next" href="#{{i.id}}" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span></a>
+		</div>
+	</div>
+ </div>
+{% endfor %}
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <script src="{% static 'js/jquery.js' %}"></script>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue-grey lighten-5">
+
+  <div style="background-color: #21d192;">
+    <div class="container">
+
+      <!-- Grid row-->
+      <div class="row py-4 d-flex align-items-center">
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h6 class="mb-0">Get connected with us on social networks!</h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter white-text mr-4"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram white-text"> </i>
+          </a>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3 dark-grey-text">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Tiny nursery & gardening</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>Tiny nursery & gardening is a plateform that deliver the nursery & gardening items and
+        organic fruits and Vegetables in affordable price.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="dark-grey-text" href="#!">Gardening</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">Organic Fruits</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">Organic Vegetables</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="dark-grey-text" href="{% url 'about' %}">About Us</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="{% url 'contact' %}">Contact</a>
+        </p>
+     
+        <p>
+          <a class="dark-grey-text" href="#!">Help</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fas fa-home mr-3"></i>14/2A raja nagar,chennai.</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> tinynursery@gmail.com</p>
+        <p>
+          <i class="fas fa-phone mr-3"></i> +91 9876543210</p>
+        
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
+    <a class="dark-grey-text" href="https://mdbootstrap.com/"> tiny nursery & gardening</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+{% endblock %}
